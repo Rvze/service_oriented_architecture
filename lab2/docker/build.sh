@@ -11,7 +11,7 @@ cd ..
 cd jax_rs_service
 ./gradlew clean
 ./gradlew build
-cd ..
+cd ../docker
 
 # BUILD docker compose
 docker-compose build
