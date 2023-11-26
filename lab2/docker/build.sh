@@ -5,6 +5,7 @@
 cd ../spring_service
 ./gradlew clean
 ./gradlew build
+chmod +x build/libs/spring_service-latest.jar
 docker build -t spring-image .
 cd ..
 

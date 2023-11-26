@@ -7,6 +7,8 @@ services:
     image: spring-image:latest
     networks:
       - dummy_network
+    ports:
+      - "8081:8081"
 
   jax_rs:
     container_name: jax_rs
@@ -14,6 +16,8 @@ services:
     image: jax_rs-image:latest
     networks:
       - dummy_network
+    ports:
+      - "8080:8080"
 
 networks:
   dummy_network:
