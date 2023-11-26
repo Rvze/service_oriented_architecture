@@ -5,12 +5,14 @@
 cd ../spring_service
 ./gradlew clean
 ./gradlew build
+docker build -t spring-image .
 cd ..
 
 # BUILD jax_rs service
 cd jax_rs_service
 ./gradlew clean
 ./gradlew build
+docker build -t jax_rs-image .
 cd ../docker
 
 # BUILD docker compose
