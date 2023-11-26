@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-slim-buster
 WORKDIR /app
 
-COPY --chmod=+x build/libs/spring_service-latest.jar build/
+COPY build/libs/spring_service-latest.jar build/
 
 RUN apt-get update && \
     apt-get install wget postgresql-client --yes && \
