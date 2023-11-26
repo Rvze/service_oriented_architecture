@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  spring:
+    container_name: spring
+    privileged: true
+    hostname: spring
+    image: spring-image:latest
+    networks:
+      - dummy_network
+
+  jax_rs:
+    container_name: jax_rs
+    hostname: jax_rs
+    image: jax_rs-image:latest
+    networks:
+      - dummy_network
+
+networks:
+  dummy_network:
+    driver: bridge
