@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.nmakarov'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.9.2'
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation ("org.projectlombok:lombok:1.18.26")
+    compileOnly("javax:javaee-api:8.0")
+
+    compileOnly("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    /**
+     * ObjectMapper
+     */
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.12.7.1')
+    /**
+     * Jackson
+     */
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
+
+}
+
+test {
+    useJUnitPlatform()
+}
