@@ -3,16 +3,15 @@
 
 # BUILD spring service
 cd ../spring_service
-./gradlew clean
-./gradlew build
-chmod +x build/libs/spring_service-latest.jar
+gradle clean
+gradle build
 docker build -t spring-image .
 cd ..
 
 # BUILD jax_rs service
 cd jax_rs_service
-./gradlew clean
-./gradlew build
+gradle clean
+gradle build
 docker build -t jax_rs-image .
 cd ../docker
 

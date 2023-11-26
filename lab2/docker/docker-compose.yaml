@@ -17,7 +17,7 @@ services:
     networks:
       - dummy_network
     ports:
-      - "8080:8080"
+      - "8082:8080"
 
 networks:
   dummy_network:
