@@ -66,14 +66,18 @@ public class TicketService {
     }
 
     public List<TicketDto> findAll(Integer page, Integer pageSize, String sort, List<String> filter) {
-        if (sort == null && filter == null) {
+        if (pageSize == null) {
             return ticketRepository.findAll().stream().map(ticketMapper::toDto).toList();
         }
-        Sort sortBy = resolveSort(sort);
+        Sort sortBy = Sort.unsorted();
+        if (sort != null) {
+            sortBy = resolveSort(sort);
+        }
         Pageable pageable = PageRequest.of(page, pageSize, sortBy);
         Page<Ticket> pages = ticketRepository.findAll(pageable);
         List<Triple<String, String, String>> resolvedFilters = new ArrayList<>();
-        filter.forEach(f -> resolvedFilters.add(resolveFilter(f)));
+        if (filter != null && !filter.isEmpty())
+            filter.forEach(f -> resolvedFilters.add(resolveFilter(f)));
 
         return pages.getContent().stream()
                 .filter(t -> filter(t, resolvedFilters))
