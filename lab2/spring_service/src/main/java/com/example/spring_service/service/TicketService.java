@@ -90,7 +90,7 @@ public class TicketService {
         List<Ticket> tickets = ticketRepository.findAll();
         Venue venue = venueMapper.toEntity(venueDto);
         List<Ticket> filteredTickets = tickets.stream()
-                .filter(t -> t.getVenue().equals(venue))
+                .filter(t -> Objects.equals(t.getVenue(), venue))
                 .toList();
         ticketRepository.deleteAll(filteredTickets);
     }
