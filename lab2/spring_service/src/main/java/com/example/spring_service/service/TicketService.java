@@ -100,7 +100,7 @@ public class TicketService {
         List<Ticket> tickets = ticketRepository.findAll();
         long amount = tickets.stream().filter(ticket -> {
             Venue venue = ticket.getVenue();
-            return venue.equals(specifiedVenue);
+            return Objects.equals(venue, specifiedVenue);
         }).count();
         return (int) amount;
     }
