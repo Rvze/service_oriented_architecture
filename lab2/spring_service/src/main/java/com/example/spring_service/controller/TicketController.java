@@ -21,9 +21,9 @@ public class TicketController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TicketDto> findById(@PathVariable("id") Long ticketId) {
+    public ResponseEntity<List<TicketDto>> findById(@PathVariable("id") Long ticketId) {
         TicketDto find = ticketService.findById(ticketId);
-        return ResponseEntity.ok(find);
+        return ResponseEntity.ok(List.of(find));
     }
 
     @PutMapping(value = "/{id}")
