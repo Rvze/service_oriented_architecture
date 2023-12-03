@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://rc1b-a91wke62kjgj13zf.mdb.yandexcloud.net:6432/makarov-n?targetServerType=master&ssl=true&sslmode=verify-full&currentSchema=soa
-    username: nmakarov
-    password: makarovnurgun
+    url: jdbc:postgresql://localhost:5432/studs?currentSchema=s311735
+    username: s311735
+    password: HEGVxAErL8gsmbIK
   jpa:
     properties:
       hibernate:

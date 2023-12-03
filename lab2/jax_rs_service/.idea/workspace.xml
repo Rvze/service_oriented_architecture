@@ -5,61 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2100a84-9d62-47f3-b1af-308501a00b05" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../docker/build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../docker/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/HelloResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/client/TicketClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/config/ObjectMapperConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/controller/BookingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/dto/Coordinates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/dto/EventDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/dto/TicketDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/dto/TicketType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/dto/VenueDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/dto/VenueType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/service/BookingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jboss-web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/SpringServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/configuration/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/controller/OperationsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/controller/TicketController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/dto/Error.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/dto/EventDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/dto/TicketDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/dto/VenueDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/exception/IncorrectFilterException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/exception/IncorrectSortException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/exception/TicketNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/mapper/TicketMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/mapper/VenueMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/model/Coordinates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/model/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/model/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/model/TicketType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/model/Venue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/model/VenueType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/repository/TicketRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/repository/VenueRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/service/TicketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/service/VenueService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/resources/db/changelog/changeset/V001__initial.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring_service/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/267627bea67d1602fa1825aef210ea4e094ec7dc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/6/267627bea67d1602fa1825aef210ea4e094ec7dc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/client/TicketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/client/TicketClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_service/src/main/resources/output_mod2_new.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +92,12 @@
       <recent name="com.nmakarov.jax_rs_service.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.jax_rs_service [build]">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle clean build" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JBoss/WildFly Server.JBoss/WildFly 18.0.1.Final">
     <configuration name="jax_rs_service [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -152,6 +109,29 @@
         </option>
         <option name="taskNames">
           <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="jax_rs_service [clean build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
             <option value="build" />
           </list>
         </option>
@@ -191,11 +171,9 @@
     <configuration name="generated-requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" requestIdentifier="#2" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="8" requestIdentifier="#8" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration name="JBoss/WildFly 18.0.1.Final" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 18.0.1.Final" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/jax_rs_service/" />
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8082/jax_rs_service/" />
       <option name="UPDATING_POLICY" value="hot-swap-classes" />
       <deployment>
         <artifact name="Gradle : com.nmakarov : jax_rs_service-1.0-SNAPSHOT.war">
@@ -305,20 +283,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.jax_rs_service [clean build]" />
       <item itemvalue="Gradle.jax_rs_service [build]" />
       <item itemvalue="Gradle.jax_rs_service [clean]" />
       <item itemvalue="HTTP Request.generated-requests | #2" />
       <item itemvalue="HTTP Request.generated-requests | #1" />
-      <item itemvalue="HTTP Request.generated-requests | #8" />
       <item itemvalue="JBoss/WildFly Server.JBoss/WildFly 18.0.1.Final" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.jax_rs_service [clean build]" />
         <item itemvalue="Gradle.jax_rs_service [build]" />
         <item itemvalue="Gradle.jax_rs_service [clean]" />
         <item itemvalue="HTTP Request.generated-requests | #2" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
-        <item itemvalue="HTTP Request.generated-requests | #8" />
       </list>
     </recent_temporary>
   </component>
@@ -335,7 +313,7 @@
       <workItem from="1699034641628" duration="6670000" />
       <workItem from="1699977095780" duration="11605000" />
       <workItem from="1700838868915" duration="1243000" />
-      <workItem from="1701025166928" duration="1540000" />
+      <workItem from="1701025166928" duration="6759000" />
     </task>
     <servers />
   </component>
@@ -359,6 +337,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/client/TicketClient.java</url>
           <line>51</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/controller/BookingController.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/service/BookingService.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

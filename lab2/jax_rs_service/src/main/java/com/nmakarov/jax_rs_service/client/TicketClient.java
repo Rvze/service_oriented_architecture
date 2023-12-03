@@ -17,8 +17,6 @@ public class TicketClient {
     private Client client;
     private static final String URL = "http://localhost:8081/api/v1/tickets";
 
-    public TicketClient() {
-    }
 
     public List<TicketDto> getTickets() {
         String url = URL;

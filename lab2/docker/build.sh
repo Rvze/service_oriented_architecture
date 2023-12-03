@@ -1,5 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC2164
+# shellcheck disable=SC2103
 
 # BUILD spring service
 cd ../spring_service
@@ -13,6 +14,11 @@ cd jax_rs_service
 gradle clean
 gradle build
 docker build -t jax_rs-image .
+
+# BUILD front
+cd ../tickets
+docker build -t front-image .
+
 cd ../docker
 
 # BUILD docker compose
