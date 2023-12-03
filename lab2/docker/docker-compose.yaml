@@ -8,7 +8,7 @@ services:
     networks:
       - dummy_network
     ports:
-      - "8084:8081"
+      - "8081:8081"
 
   jax_rs:
     container_name: jax_rs
