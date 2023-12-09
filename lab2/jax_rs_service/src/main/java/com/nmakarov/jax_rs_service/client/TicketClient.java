@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TicketClient {
     private Client client;
-    private static final String URL = "http://localhost:8081/api/v1/tickets";
+    private static final String URL = "https://localhost:8090/api/v1/tickets";
 
 
     public List<TicketDto> getTickets() {

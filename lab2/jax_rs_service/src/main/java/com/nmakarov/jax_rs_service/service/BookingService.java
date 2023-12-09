@@ -3,14 +3,19 @@ package com.nmakarov.jax_rs_service.service;
 import com.nmakarov.jax_rs_service.client.TicketClient;
 import com.nmakarov.jax_rs_service.dto.EventDto;
 import com.nmakarov.jax_rs_service.dto.TicketDto;
+import org.jvnet.hk2.annotations.Service;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
 import java.util.Objects;
 
-@ApplicationScoped
+//@ApplicationScoped
+@Service
 public class BookingService {
     private final TicketClient ticketClient = new TicketClient();
+
+    public BookingService() {
+    }
 
     public void deleteEvent(Long eventId) {
         List<TicketDto> tickets = ticketClient.getTickets();

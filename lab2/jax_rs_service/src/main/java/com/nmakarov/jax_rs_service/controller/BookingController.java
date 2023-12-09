@@ -11,8 +11,7 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class BookingController {
-    @Inject
-    private BookingService bookingService;
+    private final BookingService bookingService = new BookingService();
 
     @DELETE
     @Path("/event/{event-id}/cancel")
@@ -30,6 +29,7 @@ public class BookingController {
 
     @GET
     @Path("/events")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response findTickets() {
         var tickets = bookingService.findTickets();
         return Response.ok(tickets).build();

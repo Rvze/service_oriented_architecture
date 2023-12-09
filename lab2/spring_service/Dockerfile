@@ -2,6 +2,12 @@ FROM openjdk:17-jdk-slim-buster
 WORKDIR /app
 
 COPY build/libs/spring_service-latest.jar build/
+COPY src/main/resources/keystore/server.crt .
+COPY src/main/resources/keystore/client.crt .
+
+RUN keytool -import -noprompt -trustcacerts -alias server -file server.crt -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
+RUN keytool -import -noprompt -trustcacerts -alias client -file client.crt -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
+
 
 RUN apt-get update && \
     apt-get install wget postgresql-client --yes && \

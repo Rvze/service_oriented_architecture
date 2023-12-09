@@ -1,9 +1,35 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IEvent, ISortTicketsType, ITicketType, ITicketVenueReqType } from './types/ITicketType.ts';
+import {BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError} from '@reduxjs/toolkit/query/react';
+import {IEvent, ISortTicketsType, ITicketType, ITicketVenueReqType} from './types/ITicketType.ts';
+
+const dynamicBaseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (
+    args,
+    WebApi,
+    extraOptions,
+    // eslint-disable-next-line require-await
+) => {
+    let baseUrl = 'https://localhost:8090/api/v1/';
+
+    try {
+        const isChanging = args?.url?.split('/')?.find((el) => el === 'booking');
+
+        if (isChanging) {
+            baseUrl = 'https://localhost:8453/';
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    const rawBaseQuery = fetchBaseQuery(
+        {
+            baseUrl,
+        });
+
+    return rawBaseQuery(args, WebApi, extraOptions);
+};
+
 export const ticketApi = createApi({
     reducerPath: 'ticketApi',
     tagTypes: ['Ticket'],
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://158.160.57.219:8081/api/v1/' }),
+    baseQuery: dynamicBaseQuery,
     endpoints: (builder) => ({
         getTickets: builder.query<(ITicketType & IEvent)[], ISortTicketsType>({
             query: (data) => {
@@ -17,8 +43,8 @@ export const ticketApi = createApi({
             },
             providesTags: (result) =>
                 result
-                    ? [...result.map(({ id }) => ({ type: 'Ticket' as const, id })), { type: 'Ticket', id: 'LIST' }]
-                    : [{ type: 'Ticket', id: 'LIST' }],
+                    ? [...result.map(({id}) => ({type: 'Ticket' as const, id})), {type: 'Ticket', id: 'LIST'}]
+                    : [{type: 'Ticket', id: 'LIST'}],
         }),
         addTicket: builder.mutation<ITicketType, Omit<ITicketType, 'id'>>({
             query: (body) => ({
@@ -32,14 +58,14 @@ export const ticketApi = createApi({
                     creationDate: new Date(),
                 },
             }),
-            invalidatesTags: [{ type: 'Ticket', id: 'LIST' }],
+            invalidatesTags: [{type: 'Ticket', id: 'LIST'}],
         }),
         deleteTicket: builder.mutation<void, number>({
             query: (id) => ({
                 url: `tickets/${id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: [{ type: 'Ticket', id: 'LIST' }],
+            invalidatesTags: [{type: 'Ticket', id: 'LIST'}],
         }),
         updateTicketForm: builder.mutation<ITicketType, ITicketType>({
             query: (body) => ({
@@ -50,7 +76,7 @@ export const ticketApi = createApi({
                     id: '',
                 },
             }),
-            invalidatesTags: [{ type: 'Ticket', id: 'LIST' }],
+            invalidatesTags: [{type: 'Ticket', id: 'LIST'}],
         }),
         getVenueAmount: builder.mutation<number, ITicketVenueReqType>({
             query: (data) => ({
@@ -70,21 +96,21 @@ export const ticketApi = createApi({
                 method: 'DELETE',
                 body,
             }),
-            invalidatesTags: [{ type: 'Ticket', id: 'LIST' }],
+            invalidatesTags: [{type: 'Ticket', id: 'LIST'}],
         }),
         deleteEvent: builder.mutation<void, number>({
             query: (id) => ({
                 url: `/booking/event/${id}/cancel`,
                 method: 'DELETE',
             }),
-            invalidatesTags: [{ type: 'Ticket', id: 'LIST' }],
+            invalidatesTags: [{type: 'Ticket', id: 'LIST'}],
         }),
         deletePerson: builder.mutation<void, number>({
             query: (id) => ({
                 url: `/booking/person/${id}/cancel`,
                 method: 'DELETE',
             }),
-            invalidatesTags: [{ type: 'Ticket', id: 'LIST' }],
+            invalidatesTags: [{type: 'Ticket', id: 'LIST'}],
         }),
     }),
 });
