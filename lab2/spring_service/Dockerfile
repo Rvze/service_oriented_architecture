@@ -1,9 +1,10 @@
-FROM openjdk:17-jdk-slim-buster
+FROM amazoncorretto:17
 WORKDIR /app
 
 COPY build/libs/spring_service-latest.jar build/
-COPY src/main/resources/keystore/server.crt .
 COPY src/main/resources/keystore/client.crt .
+COPY src/main/resources/keystore/client.truststore .
+COPY src/main/resources/keystore/client.keystore .
 
 RUN keytool -import -noprompt -trustcacerts -alias server -file server.crt -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
 RUN keytool -import -noprompt -trustcacerts -alias client -file client.crt -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
