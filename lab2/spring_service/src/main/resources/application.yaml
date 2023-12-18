@@ -11,10 +11,3 @@ spring:
         format_sql: true
 server:
   port: 8090
-  ssl:
-    enabled: true
-    key-store: classpath:keystore/client.keystore
-    key-store-password: secret
-    key-store-provider: SUN
-    trust-store: classpath:keystore/client.truststore
-    trust-store-password: secret
