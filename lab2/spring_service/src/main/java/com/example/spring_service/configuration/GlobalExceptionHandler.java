@@ -1,6 +1,7 @@
 package com.example.spring_service.configuration;
 
 import com.example.spring_service.dto.Error;
+import com.example.spring_service.model.ErrorResponse;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Set<Error>> handleConstraintViolationException(ConstraintViolationException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(fromConstraintViolationException(e));
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorResponse> handeAll(RuntimeException e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse(e.getMessage(), 500));
     }
 
 
