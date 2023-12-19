@@ -40,7 +40,7 @@ public class TicketController {
 
     @GetMapping
     public ResponseEntity<List<TicketDto>> findAll(@RequestParam(name = "page", defaultValue = "0") Integer page, @RequestParam(value = "page_size", required = false) Integer pageSize,
-                                                   @RequestParam(name = "sort", required = false) String sort, @RequestParam(name = "filter", required = false) List<String> filter) {
+                                                   @RequestParam(name = "sort", required = false) List<String> sort, @RequestParam(name = "filter", required = false) List<String> filter) {
         List<TicketDto> ticketList = ticketService.findAll(page, pageSize, sort, filter);
         return ResponseEntity.ok(ticketList);
     }
