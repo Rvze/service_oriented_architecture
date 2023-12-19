@@ -1,5 +1,6 @@
 package com.example.spring_service.controller;
 
+import com.example.spring_service.dto.AmountResponse;
 import com.example.spring_service.dto.VenueDto;
 import com.example.spring_service.model.VenueType;
 import com.example.spring_service.service.TicketService;
@@ -22,9 +23,10 @@ public class OperationsController {
     }
 
     @GetMapping("/venue/amount")
-    public ResponseEntity<Integer> getWithVenue(@RequestParam String name, @RequestParam Integer capacity, @RequestParam VenueType type) {
+    public ResponseEntity<AmountResponse> getWithVenue(@RequestParam String name, @RequestParam Integer capacity, @RequestParam VenueType type) {
         Integer amount = ticketService.getWithVenue(name, capacity, type);
-        return ResponseEntity.ok(amount);
+        AmountResponse amountResponse = new AmountResponse(amount);
+        return ResponseEntity.ok(amountResponse);
     }
 
     @GetMapping("/prices/unique")

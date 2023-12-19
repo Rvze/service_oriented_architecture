@@ -12,6 +12,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class Coordinates implements Serializable {
-    private long x;
-    private Integer y;
+    private Long x;
+    private double y;
 }

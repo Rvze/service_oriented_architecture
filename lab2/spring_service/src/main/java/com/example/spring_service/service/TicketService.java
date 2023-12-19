@@ -2,11 +2,10 @@ package com.example.spring_service.service;
 
 import com.example.spring_service.dto.TicketDto;
 import com.example.spring_service.dto.VenueDto;
-import com.example.spring_service.exception.IncorrectFilterException;
-import com.example.spring_service.exception.IncorrectSortException;
-import com.example.spring_service.exception.TicketNotFoundException;
+import com.example.spring_service.exception.*;
 import com.example.spring_service.mapper.TicketMapper;
 import com.example.spring_service.mapper.VenueMapper;
+import com.example.spring_service.model.FilterOperations;
 import com.example.spring_service.model.Ticket;
 import com.example.spring_service.model.Venue;
 import com.example.spring_service.model.VenueType;
@@ -20,13 +19,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,7 +36,14 @@ public class TicketService {
 
     @Transactional
     public TicketDto createTicket(TicketDto ticketDto) {
+        ticketDto.setType(ticketDto.getType().toUpperCase());
         Ticket mappedTicket = ticketMapper.toEntity(ticketDto);
+        var coordinates = mappedTicket.getCoordinates();
+        if (coordinates.getX() == null)
+            throw new CoordinatesValidateException("Coordinate x must be not null");
+        if (coordinates.getY() < -734) {
+            throw new CoordinatesValidateException("Coordinate y must be greater than -734");
+        }
         return ticketMapper.toDto(ticketRepository.save(mappedTicket));
     }
 
@@ -65,7 +67,7 @@ public class TicketService {
         ticketRepository.delete(ticket);
     }
 
-    public List<TicketDto> findAll(Integer page, Integer pageSize, String sort, List<String> filter) {
+    public List<TicketDto> findAll(Integer page, Integer pageSize, List<String> sort, List<String> filter) {
         if (pageSize == null) {
             return ticketRepository.findAll().stream().map(ticketMapper::toDto).toList();
         }
@@ -124,19 +126,29 @@ public class TicketService {
         } else if (split.length == 0) {
             throw new IncorrectFilterException("Incorrect filter format. Look at the documentation");
         }
+        if (Arrays.stream(FilterOperations.values()).filter(it -> Objects.equals(it.getValue(), split[1])).toList().isEmpty()) {
+            throw new FindAllException(String.format("Filter operation doesnt correct : %s", split[1]));
+        }
         return Triple.of(split[0], split[1], split[2]);
     }
 
-    private Sort resolveSort(String sort) {
-        String[] split = sort.split("_");
-        if (split.length != 2) {
-            throw new IncorrectSortException(String.format("The sorting must consist of exactly 2 arguments : %s", sort));
-        }
-        if (split[1].equalsIgnoreCase("asc")) {
-            return Sort.by(Sort.Order.asc(split[0]));
-        } else {
-            return Sort.by(Sort.Order.desc(split[0]));
-        }
+    private Sort resolveSort(List<String> sort) {
+        List<Sort.Order> orders = new ArrayList<>();
+        sort.forEach(it -> {
+            String[] split = it.split("_");
+            if (split.length != 2) {
+                throw new IncorrectSortException(String.format("The sorting must consist of exactly 2 arguments : %s", sort));
+            }
+            if (!Objects.equals(split[1], "asc") && !Objects.equals(split[1], "desc")) {
+                throw new FindAllException("Sort second parameter must be asc or desc");
+            }
+            if (split[1].equalsIgnoreCase("asc")) {
+                orders.add(Sort.Order.asc(split[0]));
+            } else {
+                orders.add(Sort.Order.desc(split[0]));
+            }
+        });
+        return Sort.by(orders);
     }
 
     private boolean filter(Ticket ticket, List<Triple<String, String, String>> resolvedFilters) {
@@ -148,31 +160,33 @@ public class TicketService {
 
             switch (field) {
                 case "name" ->
-                        filterResult.set(filterResult.get() && strOperationFilter(ticket::getName, operation, value));
+                        filterResult.set(filterResult.get() && strOperationFilter(ticket.getName(), operation, value));
                 case "price" ->
-                        filterResult.set(filterResult.get() && numOperationFilter(ticket::getPrice, operation, Integer.valueOf(value)));
+                        filterResult.set(filterResult.get() && numOperationFilter(ticket.getPrice(), operation, Integer.valueOf(value)));
+                case "type" ->
+                        filterResult.set(filterResult.get() && strOperationFilter(ticket.getType().name(), operation, value));
 
             }
         });
         return filterResult.get();
     }
 
-    private boolean strOperationFilter(Supplier<String> argument, String operation, String value) {
+    private boolean strOperationFilter(String argument, String operation, String value) {
         return switch (operation) {
-            case "eq" -> argument.get().equals(value);
-            case "neq" -> !argument.get().equals(value);
-            case "more" -> value.length() >= argument.get().length();
-            case "less" -> value.length() < argument.get().length();
+            case "eq" -> argument.equals(value);
+            case "neq" -> !argument.equals(value);
+            case "more" -> value.length() < argument.length();
+            case "less" -> value.length() > argument.length();
             default -> throw new IllegalStateException("Unexpected value: " + operation);
         };
     }
 
-    private boolean numOperationFilter(Supplier<Number> argument, String operation, Number value) {
+    private boolean numOperationFilter(Number argument, String operation, Number value) {
         return switch (operation) {
-            case "eq" -> Objects.equals(argument.get(), value);
-            case "neq" -> !Objects.equals(argument.get(), value);
-            case "more" -> argument.get().intValue() > value.intValue();
-            case "less" -> argument.get().intValue() < value.intValue();
+            case "eq" -> Objects.equals(argument, value);
+            case "neq" -> !Objects.equals(argument, value);
+            case "more" -> argument.intValue() > value.intValue();
+            case "less" -> argument.intValue() < value.intValue();
             default -> throw new IllegalStateException("Unexpected value: " + operation);
         };
     }
