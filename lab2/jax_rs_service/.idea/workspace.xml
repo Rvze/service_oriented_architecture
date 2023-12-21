@@ -5,13 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2100a84-9d62-47f3-b1af-308501a00b05" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/267627bea67d1602fa1825aef210ea4e094ec7dc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/6/267627bea67d1602fa1825aef210ea4e094ec7dc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/client/TicketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nmakarov/jax_rs_service/client/TicketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring_service/src/main/resources/output_mod2_new.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/configuration/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/configuration/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/controller/TicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/dto/TicketDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/dto/TicketDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/model/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/model/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/service/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring_service/src/main/java/com/example/spring_service/service/TicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/.eslintrc.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/.prettierrc.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/default-config.eslintrc.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/postcss.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/core/api/ticket/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/core/api/ticket/types/ITicketType.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/core/store/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/index.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/main.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/pages/default/DefaultPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/pages/default/index.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/router/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/types/module/typings.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/AddTicketForm/index.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/AddTicketForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/DeleteEventForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/DeletePersonForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/DeleteTicketByVenueForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/DeleteTicketForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/GetUnuquePricesForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/GetVenueAmountForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/Pagination/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/SortByIdForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/Ticket/index.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/Ticket/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/src/view/components/UpdateTicketForm/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/tsconfig.node.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tickets/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,11 +318,11 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.jax_rs_service [clean build]" />
       <item itemvalue="Gradle.jax_rs_service [build]" />
+      <item itemvalue="Gradle.jax_rs_service [clean build]" />
       <item itemvalue="Gradle.jax_rs_service [clean]" />
-      <item itemvalue="HTTP Request.generated-requests | #2" />
       <item itemvalue="HTTP Request.generated-requests | #1" />
+      <item itemvalue="HTTP Request.generated-requests | #2" />
       <item itemvalue="JBoss/WildFly Server.JBoss/WildFly 18.0.1.Final" />
     </list>
     <recent_temporary>
@@ -314,6 +349,8 @@
       <workItem from="1699977095780" duration="11605000" />
       <workItem from="1700838868915" duration="1243000" />
       <workItem from="1701025166928" duration="6759000" />
+      <workItem from="1703170696469" duration="6000" />
+      <workItem from="1703172375744" duration="356000" />
     </task>
     <servers />
   </component>

@@ -55,6 +55,10 @@ public class TicketService {
 
     @Transactional
     public TicketDto updateTicket(Long ticketId, TicketDto ticketDto) {
+        ticketDto.setType(ticketDto.getType().toUpperCase());
+        if (ticketDto.getPrice() != null && ticketDto.getPrice() < 0) {
+            throw new BusinessException("Ticket price must be higher than 0");
+        }
         Ticket targetTicket = ticketRepository.findById(ticketId).orElseThrow(() ->
                 new TicketNotFoundException(String.format(TICKET_NOT_FOUND_MSG, ticketId)));
         ticketMapper.update(targetTicket, ticketDto);

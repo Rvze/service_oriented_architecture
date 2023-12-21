@@ -8,7 +8,7 @@ import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "tickets")
@@ -32,7 +32,7 @@ public class Ticket {
 
     @Column(name = "creation_date")
     @NotNull(message = "Ticket creation date cannot be null")
-    private LocalDateTime creationDate;
+    private LocalDate creationDate;
 
     @Column(name = "price")
     @NotNull(message = "Ticket price cannot be null")
