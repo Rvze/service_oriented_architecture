@@ -2,6 +2,8 @@ plugins {
     java
     id("org.springframework.boot") version "3.1.5"
     id("io.spring.dependency-management") version "1.1.3"
+    id("io.freefair.aspectj") version "5.1.1"
+
 }
 
 group = "com.example"
@@ -44,6 +46,7 @@ dependencies {
      */
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 
+    implementation("org.aspectj:aspectjrt:1.9.21")
 }
 
 tasks.withType<Test> {
