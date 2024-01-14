@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://rc1b-a91wke62kjgj13zf.mdb.yandexcloud.net:6432/makarov-n?targetServerType=master&ssl=true&sslmode=verify-full&currentSchema=soa
+    username: nmakarov
+    password: makarovnurgun
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+server:
+  port: 8090
+  ssl:
+    enabled: true
+    key-store: classpath:keystore/client.keystore
+    key-store-password: secret
+    key-store-provider: SUN
+    trust-store: classpath:keystore/client.truststore
+    trust-store-password: secret
