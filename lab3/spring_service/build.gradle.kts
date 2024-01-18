@@ -26,6 +26,8 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
     implementation("org.liquibase:liquibase-core")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -45,8 +47,14 @@ dependencies {
      * Swagger
      */
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
-
+    /**
+     * Aspectj
+     */
     implementation("org.aspectj:aspectjrt:1.9.21")
+    /**
+     * Consul
+     */
+    implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery:4.0.3")
 }
 
 tasks.withType<Test> {

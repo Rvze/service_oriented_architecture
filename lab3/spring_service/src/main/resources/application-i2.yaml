@@ -18,13 +18,22 @@ spring:
       port: 8500
       host: localhost
       discovery:
-        instance-id: ticket_service_i1
+        instance-id: ticket_service_i2
 server:
-  port: 8081
-#  ssl:
-#    enabled: true
-#    key-store: classpath:keystore/client.keystore
-#    key-store-password: secret
-#    key-store-provider: SUN
-#    trust-store: classpath:keystore/client.truststore
-#    trust-store-password: secret
+  port: 8083
+  ssl:
+    enabled: true
+    key-store: classpath:keystore/client.keystore
+    key-store-password: secret
+    key-store-provider: SUN
+    trust-store: classpath:keystore/client.truststore
+    trust-store-password: secret
+management:
+  server:
+    ssl:
+      enabled: true
+      key-store: classpath:keystore/client.keystore
+      key-store-password: secret
+      trust-store: classpath:keystore/client.truststore
+      trust-store-password: secret
+    port: 841
