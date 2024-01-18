@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lab3/gateway-cloud/gateway-cloud.iml" filepath="$PROJECT_DIR$/lab3/gateway-cloud/gateway-cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/service_oriented_architecture.iml" filepath="$PROJECT_DIR$/.idea/service_oriented_architecture.iml" />
+    </modules>
+  </component>
+</project>
