@@ -18,7 +18,7 @@ public class BookingService {
         List<TicketDto> tickets = ticketClient.getTickets();
         tickets.forEach(t -> {
             EventDto event = t.getEvent();
-            if (Objects.equals(event.getId(), eventId)) {
+            if (event != null && Objects.equals(event.getId(), eventId)) {
                 ticketClient.deleteTicket(t.getId());
             }
         });

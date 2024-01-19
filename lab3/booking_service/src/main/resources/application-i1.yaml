@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8083
 spring:
   application:
     name: booking-service
@@ -11,3 +11,4 @@ eureka:
       defaultZone: http://localhost:8661/eureka
   instance:
     hostname: localhost
+    instance-id: ${spring.application.name}_i1

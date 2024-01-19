@@ -13,27 +13,27 @@ spring:
         format_sql: true
   mvc:
     throw-exception-if-no-handler-found: true
-  cloud:
-    consul:
-      port: 8500
-      host: localhost
-      discovery:
-        instance-id: ticket_service_i2
+#  cloud:
+#    consul:
+#      port: 8500
+#      host: localhost
+#      discovery:
+#        instance-id: ticket_service_i2
 server:
-  port: 8083
-  ssl:
-    enabled: true
-    key-store: classpath:keystore/client.keystore
-    key-store-password: secret
-    key-store-provider: SUN
-    trust-store: classpath:keystore/client.truststore
-    trust-store-password: secret
-management:
-  server:
-    ssl:
-      enabled: true
-      key-store: classpath:keystore/client.keystore
-      key-store-password: secret
-      trust-store: classpath:keystore/client.truststore
-      trust-store-password: secret
-    port: 841
+  port: 8082
+#  ssl:
+#    enabled: true
+#    key-store: classpath:keystore/client.keystore
+#    key-store-password: secret
+#    key-store-provider: SUN
+#    trust-store: classpath:keystore/client.truststore
+#    trust-store-password: secret
+#management:
+#  server:
+#    ssl:
+#      enabled: true
+#      key-store: classpath:keystore/client.keystore
+#      key-store-password: secret
+#      trust-store: classpath:keystore/client.truststore
+#      trust-store-password: secret
+#    port: 841

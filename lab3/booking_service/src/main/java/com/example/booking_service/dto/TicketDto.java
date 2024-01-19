@@ -3,13 +3,13 @@ package com.example.booking_service.dto;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 public class TicketDto implements Serializable {
     private Long id;
     private String name;
-    private LocalDateTime creationDate;
+    private LocalDate creationDate;
     private Coordinates coordinates;
     private Integer price;
     private TicketType type;
