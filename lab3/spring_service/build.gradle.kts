@@ -54,7 +54,7 @@ dependencies {
     /**
      * Consul
      */
-//    implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery:4.0.3")
+    implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery:4.0.3")
 }
 
 tasks.withType<Test> {

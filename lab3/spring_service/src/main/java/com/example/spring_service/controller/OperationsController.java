@@ -1,4 +1,4 @@
-package com.example.spring_service.controller;
+package com.example.spring_service.endpoint;
 
 import com.example.spring_service.dto.AmountResponse;
 import com.example.spring_service.dto.VenueDto;

@@ -1,5 +1,11 @@
 server:
   port: 8085
+  ssl:
+    enabled: false
+    key-store: classpath:keystore/baeldung.p12
+    key-store-password: password
+    key-alias: baeldung
+    key-store-type: PKCS12
 spring:
   application:
     name: api-gateway
@@ -10,22 +16,12 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-#        - id: test
-#          uri: lb://booking-service/
-#          predicates:
-#            - Path=/test/**
-#          filters:
-#            - RewritePath=/booking-service(?<segment>/?.*), $\{segment}
-#          metadata:
-#            management.port: 8083
         - id: tickets
           uri: http://localhost:8080
           predicates:
             - Path=/tickets/**
           filters:
             - RewritePath=/tickets(?<segment>/?.*), $\{segment}
-#          metadata:
-#            management-port: 8080
 eureka:
   client:
     register-with-eureka: true

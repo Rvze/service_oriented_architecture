@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ticket_service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/postgres?currentSchema=soa
+    username:
+    password:
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+server:
+  port: 8081
+#  ssl:
+#    enabled: true
+#    key-store: classpath:keystore/client.keystore
+#    key-store-password: secret
+#    key-store-provider: SUN
+#    trust-store: classpath:keystore/client.truststore
+#    trust-store-password: secret

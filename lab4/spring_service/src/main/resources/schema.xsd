@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="com/example/spring_service/dto" elementFormDefault="qualified"
+           xmlns:tns="com/example/spring_service/dto">
+
+    <xs:element name="getUniquePricesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="price" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getWithVenueRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="capacity" type="xs:int"/>
+                <xs:element name="venueType" type="tns:VenueType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="amountResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="amount" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteVenueRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="venueDto" type="tns:VenueDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="findAllTicketsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="page" type="xs:int"/>
+                <xs:element name="pageSize" type="xs:int"/>
+                <xs:element name="sortParams" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="filterParams" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="sortParams">
+        <xs:sequence>
+            <xs:element name="params" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="filterParams">
+        <xs:sequence>
+            <xs:element name="params" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="deleteTicketByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateTicketRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="ticketDto" type="tns:ticketDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTicketByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ticketsDtoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tickets" type="tns:ticketDto" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ticketDtoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ticketDto" type="tns:ticketDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ticketDtoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="creationDate" type="xs:dateTime"/>
+                <xs:element name="coordinates" type="tns:Coordinates"/>
+                <xs:element name="price" type="xs:int"/>
+                <xs:element name="type" type="xs:string"/>
+                <xs:element name="venue" type="tns:VenueDto"/>
+                <xs:element name="event" type="tns:EventDto"/>
+                <xs:element name="personId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ticketDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="creationDate" type="xs:dateTime"/>
+            <xs:element name="coordinates" type="tns:Coordinates"/>
+            <xs:element name="price" type="xs:int"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="venue" type="tns:VenueDto"/>
+            <xs:element name="event" type="tns:EventDto"/>
+            <xs:element name="personId" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Coordinates">
+        <xs:sequence>
+            <xs:element name="x" type="xs:long"/>
+            <xs:element name="y" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="TicketType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="VIP"/>
+            <xs:enumeration value="USUAL"/>
+            <xs:enumeration value="CHEAP"/>
+            <xs:enumeration value="BUDGETARY"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="VenueDto">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="capacity" type="xs:int"/>
+            <xs:element name="type" type="tns:VenueType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="VenueType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="THEATRE"/>
+            <xs:enumeration value="CINEMA"/>
+            <xs:enumeration value="MALL"/>
+            <xs:enumeration value="STADIUM"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="EventDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>
