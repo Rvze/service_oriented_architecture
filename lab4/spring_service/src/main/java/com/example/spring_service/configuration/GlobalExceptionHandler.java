@@ -1,10 +1,9 @@
 package com.example.spring_service.configuration;
 
-import com.example.spring_service.dto.Error;
+import com.example.spring_service.dto.ServiceError;
 import com.example.spring_service.exception.BusinessException;
 import com.example.spring_service.exception.CoordinatesValidateException;
 import com.example.spring_service.exception.FindAllException;
-import com.example.spring_service.exception.TicketNotFoundException;
 import com.example.spring_service.model.ErrorResponse;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -27,7 +26,7 @@ import java.util.*;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<Set<Error>> handleConstraintViolationException(ConstraintViolationException e) {
+    public ResponseEntity<Set<ServiceError>> handleConstraintViolationException(ConstraintViolationException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(fromConstraintViolationException(e));
     }
 
@@ -99,10 +98,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(msg, HttpStatus.BAD_REQUEST.value()));
     }
 
-    @ExceptionHandler(TicketNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handeTicketNotFoundException(TicketNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND.value()));
-    }
+//    @ExceptionHandler(ServiceFaultException.class)
+//    public ResponseEntity<ErrorResponse> handeTicketNotFoundException(ServiceFaultException e) {
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND.value()));
+//    }
 //
 //    @ExceptionHandler(RuntimeException.class)
 //    public ResponseEntity<ErrorResponse> handeAll(RuntimeException e) {
@@ -115,11 +114,11 @@ public class GlobalExceptionHandler {
     }
 
 
-    private Set<Error> fromConstraintViolationException(ConstraintViolationException e) {
-        Set<Error> errors = new HashSet<>();
-        e.getConstraintViolations().forEach(it -> errors.add(
-                new Error("ILLEGAL_ARGUMENT_PROVIDED", it.getMessage())));
-        return errors;
+    private Set<ServiceError> fromConstraintViolationException(ConstraintViolationException e) {
+        Set<ServiceError> serviceErrors = new HashSet<>();
+        e.getConstraintViolations().forEach(it -> serviceErrors.add(
+                new ServiceError("ILLEGAL_ARGUMENT_PROVIDED", it.getMessage())));
+        return serviceErrors;
     }
 
 }

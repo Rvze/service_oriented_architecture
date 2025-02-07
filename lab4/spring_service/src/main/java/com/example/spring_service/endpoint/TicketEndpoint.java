@@ -21,19 +21,19 @@ public class TicketEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getTicketByIdRequest")
     @ResponsePayload
-    public TicketDtoResponse findById(@RequestPayload GetTicketByIdRequest ticketId) {
+    public GetTicketByIdResponse findById(@RequestPayload GetTicketByIdRequest ticketId) {
         return ticketService.findById(ticketId.getId());
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ticketDtoRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createTicketRequest")
     @ResponsePayload
-    public TicketDtoResponse createTicket(@RequestPayload TicketDtoRequest ticketDto) {
+    public CreateTicketResponse createTicket(@RequestPayload CreateTicketRequest ticketDto) {
         return ticketService.createTicket(ticketDto);
     }
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateTicketRequest")
     @ResponsePayload
-    public TicketDtoResponse update(@RequestPayload UpdateTicketRequest updateTicketRequest) {
+    public UpdateTicketResponse update(@RequestPayload UpdateTicketRequest updateTicketRequest) {
         return ticketService.updateTicket(updateTicketRequest.getId(), updateTicketRequest.getTicketDto());
     }
 
@@ -42,10 +42,9 @@ public class TicketEndpoint {
         ticketService.deleteById(ticketId.getId());
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "findAllTicketsRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllTicketsRequest")
     @ResponsePayload
-    public TicketsDtoResponse findAll(@RequestPayload FindAllTicketsRequest findAllTicketsRequest) {
-        return ticketService.findAll(findAllTicketsRequest.getPage(), findAllTicketsRequest.getPageSize(),
-                findAllTicketsRequest.getSortParams(), findAllTicketsRequest.getFilterParams());
+    public GetAllTicketsResponse findAll(@RequestPayload GetAllTicketsRequest findAllTicketsRequest) {
+        return ticketService.findAll(findAllTicketsRequest);
     }
 }

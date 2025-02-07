@@ -8,6 +8,8 @@ import com.example.spring_service.model.FilterOperations;
 import com.example.spring_service.model.Ticket;
 import com.example.spring_service.model.Venue;
 import com.example.spring_service.repository.TicketRepository;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.Triple;
 import org.springframework.data.domain.Page;
@@ -33,8 +35,8 @@ public class TicketService {
     private static final String TICKET_NOT_FOUND_MSG = "Ticket not found by id = %d";
 
     @Transactional
-    public TicketDtoResponse createTicket(TicketDtoRequest ticketDto) {
-        TicketDtoResponse response = new TicketDtoResponse();
+    public CreateTicketResponse createTicket(CreateTicketRequest ticketDto) {
+        CreateTicketResponse response = new CreateTicketResponse();
         ticketDto.setType(ticketDto.getType().toUpperCase());
         Ticket mappedTicket = ticketMapper.toEntity(ticketDto);
         var coordinates = mappedTicket.getCoordinates();
@@ -43,53 +45,61 @@ public class TicketService {
         if (coordinates.getY() < -734) {
             throw new CoordinatesValidateException("Coordinate y must be greater than -734");
         }
-        response.setTicketDto(ticketMapper.toDto(ticketRepository.save(mappedTicket)));
+        try {
+            response.setTicketDto(ticketMapper.toDto(ticketRepository.save(mappedTicket)));
+        } catch (ConstraintViolationException constraintViolationException) {
+            String message = constraintViolationException.getConstraintViolations().stream()
+                    .map(ConstraintViolation::getMessage)
+                    .collect(Collectors.joining(", "));
+            throw new BusinessException(message,
+                    new ServiceError("404", message));
+        }
         return response;
     }
 
-    public TicketDtoResponse findById(Long ticketId) {
+    public GetTicketByIdResponse findById(Long ticketId) {
         Ticket findTicket = ticketRepository.findById(ticketId).orElseThrow(() ->
-                new TicketNotFoundException(String.format(TICKET_NOT_FOUND_MSG, ticketId)));
-        TicketDtoResponse response = new TicketDtoResponse();
+                new BusinessException(String.format(TICKET_NOT_FOUND_MSG, ticketId), new ServiceError("404", String.format(TICKET_NOT_FOUND_MSG, ticketId))));
+        GetTicketByIdResponse response = new GetTicketByIdResponse();
         response.setTicketDto(ticketMapper.toDto(findTicket));
         return response;
     }
 
     @Transactional
-    public TicketDtoResponse updateTicket(Long ticketId, TicketDto ticketDto) {
+    public UpdateTicketResponse updateTicket(Long ticketId, TicketDto ticketDto) {
         ticketDto.setType(ticketDto.getType().toUpperCase());
         if (ticketDto.getPrice() <= 0) {
             throw new BusinessException("Ticket price must be higher than 0");
         }
         Ticket targetTicket = ticketRepository.findById(ticketId).orElseThrow(() ->
-                new TicketNotFoundException(String.format(TICKET_NOT_FOUND_MSG, ticketId)));
+                new BusinessException(String.format(TICKET_NOT_FOUND_MSG, ticketId), new ServiceError("404", TICKET_NOT_FOUND_MSG)));
         ticketMapper.update(targetTicket, ticketDto);
-        TicketDtoResponse response = new TicketDtoResponse();
+        UpdateTicketResponse response = new UpdateTicketResponse();
         response.setTicketDto(ticketMapper.toDto(targetTicket));
         return response;
     }
 
     public void deleteById(Long ticketId) {
         Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() ->
-                new TicketNotFoundException(String.format(TICKET_NOT_FOUND_MSG, ticketId)));
+                new BusinessException(String.format(TICKET_NOT_FOUND_MSG, ticketId), new ServiceError("404", TICKET_NOT_FOUND_MSG)));
         ticketRepository.delete(ticket);
     }
 
-    public TicketsDtoResponse findAll(Integer page, Integer pageSize, List<String> sort, List<String> filter) {
-        TicketsDtoResponse ticketsDto = new TicketsDtoResponse();
-        if (pageSize == null) {
+    public GetAllTicketsResponse findAll(GetAllTicketsRequest getAllTicketsRequest) {
+        GetAllTicketsResponse ticketsDto = new GetAllTicketsResponse();
+        if (getAllTicketsRequest.getPageSize() == 0) {
             ticketsDto.getTickets().addAll(ticketRepository.findAll().stream().map(ticketMapper::toDto).toList());
             return ticketsDto;
         }
         Sort sortBy = Sort.unsorted();
-        if (sort != null && !sort.isEmpty()) {
-            sortBy = resolveSort(sort);
+        if (getAllTicketsRequest.getSortParams() != null && !getAllTicketsRequest.getSortParams().isEmpty()) {
+            sortBy = resolveSort(getAllTicketsRequest.getSortParams());
         }
-        Pageable pageable = PageRequest.of(page, pageSize, sortBy);
+        Pageable pageable = PageRequest.of(getAllTicketsRequest.getPage(), getAllTicketsRequest.getPageSize(), sortBy);
         Page<Ticket> pages = ticketRepository.findAll(pageable);
         List<Triple<String, String, String>> resolvedFilters = new ArrayList<>();
-        if (filter != null && !filter.isEmpty())
-            filter.forEach(f -> resolvedFilters.add(resolveFilter(f)));
+        if (getAllTicketsRequest.getFilterParams() != null && !getAllTicketsRequest.getFilterParams().isEmpty())
+            getAllTicketsRequest.getFilterParams().forEach(f -> resolvedFilters.add(resolveFilter(f)));
 
         ticketsDto.getTickets().addAll(pages.getContent().stream()
                 .filter(t -> filter(t, resolvedFilters))
